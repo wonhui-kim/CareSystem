@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 
 interface CustomerProfileCardProps {
   name: string;
@@ -59,19 +59,23 @@ export function CustomerProfileCard({
         </div>
       </div>
 
-      <div className="flex gap-2 justify-center">
-        <button 
-          onClick={onDetailClick}
-          className="bg-[#242760] text-white px-6 py-2 rounded-lg text-sm hover:bg-[#1a1d4a] transition-colors"
-        >
-          상세열람
-        </button>
-        <button 
-          onClick={onHistoryClick}
-          className="bg-[#242760] text-white px-6 py-2 rounded-lg text-sm hover:bg-[#1a1d4a] transition-colors"
-        >
-          이전 상담
-        </button>
+      <div className="flex gap-8 justify-center">
+        <div className="min-w-[100px] flex justify-center">
+          <button 
+            onClick={onDetailClick}
+            className="bg-[#242760] text-white px-6 py-2 rounded-lg text-sm hover:bg-[#1a1d4a] transition-colors"
+          >
+            상세열람
+          </button>
+        </div>
+        <div className="min-w-[100px] flex justify-center">
+          <button 
+            onClick={onHistoryClick}
+            className="bg-[#242760] text-white px-6 py-2 rounded-lg text-sm hover:bg-[#1a1d4a] transition-colors"
+          >
+            이전 상담
+          </button>
+        </div>
       </div>
     </div>
   );

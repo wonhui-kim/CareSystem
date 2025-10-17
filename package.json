@@ -1,6 +1,6 @@
 
   {
-      "name": "규제 준수 모니터링 시스템",
+      "name": "C.A.R.E System",
       "version": "0.1.0",
       "private": true,
       "dependencies": {

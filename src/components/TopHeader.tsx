@@ -1,4 +1,5 @@
 import { ActionButton } from './ActionButton';
+import { CareLogo } from './CareLogo';
 
 interface TopHeaderProps {
   isRecording: boolean;
@@ -20,10 +21,7 @@ export function TopHeader({
       <div className="flex items-center gap-4">
         {/* Logo/Brand */}
         <div className="flex items-center gap-3">
-          <div className="flex flex-col leading-tight">
-            <div className="text-[#001e5a] text-2xl font-bold">C.A.R.E</div>
-            <div className="text-[#001e5a] text-sm">System</div>
-          </div>
+          <CareLogo size="md" color="blue" />
         </div>
         
         {/* Sidebar Toggle */}

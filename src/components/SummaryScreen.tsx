@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ConsultationHistoryList, ConsultationHistory } from './ConsultationHistoryList';
 import { FeedbackCard, FeedbackItem } from './FeedbackCard';
 import { ScrollArea } from './ui/scroll-area';
 import { Textarea } from './ui/textarea';
 import { Save, X, MessageSquarePlus } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 import { Toaster } from './ui/sonner';
+import { CareLogo } from './CareLogo';
 
 interface SavedNote {
   id: string;
@@ -221,10 +222,7 @@ export function SummaryScreen({ feedbacks, customerName, onNewConsultation }: Su
       {/* Top Header */}
       <div className="h-[92px] bg-white border-b-2 border-[#001e5a] flex items-center justify-between px-6">
         <div className="flex items-center gap-3">
-          <div className="flex flex-col leading-tight">
-            <div className="text-[#001e5a] text-2xl font-bold">C.A.R.E</div>
-            <div className="text-[#001e5a] text-sm">System</div>
-          </div>
+          <CareLogo size="md" color="blue" />
         </div>
         
         <div className="flex gap-3">
@@ -309,8 +307,10 @@ export function SummaryScreen({ feedbacks, customerName, onNewConsultation }: Su
                       {/* Feedbacks List */}
                       <div className="space-y-6">
                         <h3 className="text-lg text-gray-900 mb-4">상담 피드백</h3>
-                        {displayData.feedbacks.map((feedback) => (
-                          <FeedbackCard key={feedback.id} feedback={feedback} variant="summary" />
+                        {displayData.feedbacks.map((feedback, index) => (
+                          <div key={feedback.id || index}>
+                            <FeedbackCard feedback={feedback} variant="summary" />
+                          </div>
                         ))}
                       </div>
 

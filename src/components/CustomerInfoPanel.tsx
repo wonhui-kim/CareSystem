@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CustomerDetailDialog } from './CustomerDetailDialog';
+import { ConsultationHistoryDialog } from './ConsultationHistoryDialog';
 import { ProductSection } from './ProductSection';
 import { CustomerProfileCard } from './CustomerProfileCard';
 
@@ -22,6 +23,7 @@ export function CustomerInfoPanel({ customerInfo }: CustomerInfoPanelProps) {
   const [recommendedExpanded, setRecommendedExpanded] = useState(true);
   const [cautionExpanded, setCautionExpanded] = useState(false);
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
+  const [historyDialogOpen, setHistoryDialogOpen] = useState(false);
 
   const getRecommendedProducts = () => {
     if (customerInfo.riskTolerance === 'conservative') {
@@ -58,6 +60,26 @@ export function CustomerInfoPanel({ customerInfo }: CustomerInfoPanelProps) {
   const recommendedProducts = getRecommendedProducts();
   const cautionProducts = getCautionProducts();
 
+  // 샘플 상담 내역 데이터
+  const consultationHistories = [
+    {
+      id: '1',
+      date: '2025.08.14',
+      agent: 'OOO 행원',
+      topic: '신용카드 발급:',
+      inquiry: '해외 이용 수수료 없는 카드 문의',
+      result: 'XX카드(해외 특화) 발급 완료'
+    },
+    {
+      id: '2',
+      date: '2024.11.05',
+      agent: '△△△ 행원',
+      topic: '예금 만기:',
+      inquiry: '만기 자금 운용 문의',
+      result: '정기예금으로 재예치'
+    }
+  ];
+
   return (
     <div className="px-4">
       {/* Customer Profile Card */}
@@ -68,9 +90,7 @@ export function CustomerInfoPanel({ customerInfo }: CustomerInfoPanelProps) {
         riskTolerance={customerInfo.riskTolerance}
         customerGrade={customerInfo.customerGrade}
         onDetailClick={() => setDetailDialogOpen(true)}
-        onHistoryClick={() => {
-          // TODO: Implement history view
-        }}
+        onHistoryClick={() => setHistoryDialogOpen(true)}
       />
 
       {/* Recommended Products */}
@@ -97,6 +117,12 @@ export function CustomerInfoPanel({ customerInfo }: CustomerInfoPanelProps) {
         open={detailDialogOpen}
         onOpenChange={setDetailDialogOpen}
         customerInfo={customerInfo}
+      />
+      
+      <ConsultationHistoryDialog
+        open={historyDialogOpen}
+        onOpenChange={setHistoryDialogOpen}
+        histories={consultationHistories}
       />
     </div>
   );

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Lightbulb, AlertTriangle } from 'lucide-react';
 import { Badge } from './ui/badge';
 

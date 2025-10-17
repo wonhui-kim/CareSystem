@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { X } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
+import { CareLogo } from './CareLogo';
 
 interface StartScreenProps {
   onStart: (customerName: string, phoneNumber: string) => void;
@@ -30,14 +31,12 @@ export function StartScreen({ onStart }: StartScreenProps) {
     <div className="min-h-screen bg-[#001e5a] relative flex items-center justify-center">
       {/* Logo */}
       <div className="absolute top-6 left-6">
-        <div className="text-white text-3xl font-bold">C.A.R.E</div>
+        <CareLogo size="lg" color="white" />
       </div>
 
       {/* System Header */}
       <div className="absolute top-6 left-1/2 transform -translate-x-1/2">
         <div className="text-center">
-          <div className="text-white font-semibold text-xl">C.A.R.E System</div>
-          <div className="text-xs text-white/70">Compliance Assistant & Real-time Enhancer</div>
         </div>
       </div>
 
